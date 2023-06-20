@@ -14,20 +14,20 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
-      # - run:
-      #     name: Install system packages
-      #     command: |
-      #       sudo apt update -qq
-      #       sudo apt install -y python3-pip
-      #       sudo pip install splunk-appinspect
       - run:
-        name: Run AppInspect
-        command: |
-          cd ..
-          rm -rf project/.circleci
-          rm -rf project/.git
-          tar -zcvf devtutorial.tar.gz project
-          splunk-appinspect inspect devtutorial.tar.gz
+          name: Install system packages
+          command: |
+            sudo apt update -qq
+            sudo apt install -y python3-pip
+            sudo pip install splunk-appinspect
+      - run:
+          name: Run AppInspect
+          command: |
+            cd ..
+            rm -rf project/.circleci
+            rm -rf project/.git
+            tar -zcvf devtutorial.tar.gz project
+            splunk-appinspect inspect devtutorial.tar.gz
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
