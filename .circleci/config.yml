@@ -15,8 +15,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Install system packages
+          command: |
+            sudo apt update -qq
+            sudo apt install -y python3-pip
+            sudo pip install splunk-appinspect
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
